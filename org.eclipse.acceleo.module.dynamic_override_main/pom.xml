@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.samsarasoftware.overriding.sample</groupId>
+		<artifactId>org.eclipse.acceleo.module.dynamic_override.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.eclipse.acceleo.module.dynamic_override.parent</relativePath>
+	</parent>
+	
+	<groupId>com.samsarasoftware.overriding.sample</groupId>
+	<artifactId>org.eclipse.acceleo.module.dynamic_override_main</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-plugin</packaging>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Eclipse - maven</id>
+			<url>https://repo.eclipse.org/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>eclipse-platform</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<properties>
+		<tycho.version>1.0.0</tycho.version>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+		<platform-version>[4.5)</platform-version>
+		<acceleo.maven.version>3.3.5-SNAPSHOT</acceleo.maven.version>
+		<acceleo.maven.engine.version>3.3.5-SNAPSHOT</acceleo.maven.engine.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.maven</artifactId>
+			<version>${acceleo.maven.version}</version>
+			<classifier />
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.acceleo</groupId>
+			<artifactId>org.eclipse.acceleo.engine</artifactId>
+			<version>${acceleo.maven.engine.version}</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<delete>
+									<fileset dir="${project.build.outputDirectory}/"
+										includes="**/*.mtl" />
+								</delete>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>compile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.maven</artifactId>
+						<version>${acceleo.maven.version}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>acceleo-compile</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<useBinaryResources>false</useBinaryResources>
+							<usePlatformResourcePath>true</usePlatformResourcePath>
+							<acceleoProject>
+								<root>${project.basedir}</root>
+								<entries>
+									<entry>
+										<input>src</input>
+										<output>target/classes</output>
+									</entry>
+								</entries>
+							</acceleoProject>
+							<packagesToRegister>
+								<packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+								<packageToRegister>org.eclipse.uml2.uml.UMLPackage</packageToRegister>
+								<packageToRegister>org.eclipse.uml2.types.TypesPackage</packageToRegister>
+								<packageToRegister>org.eclipse.uml2.uml.profile.standard.StandardPackage</packageToRegister>
+							</packagesToRegister>
+							<uriHandler>org.eclipse.acceleo.maven.AcceleoURIHandler</uriHandler>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+	</profiles>
+</project>

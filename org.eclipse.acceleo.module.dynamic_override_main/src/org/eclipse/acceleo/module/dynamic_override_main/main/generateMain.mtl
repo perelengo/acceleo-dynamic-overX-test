@@ -1,0 +1,45 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generateMain('http://www.eclipse.org/uml2/5.0.0/UML', 'http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard','http://www.eclipse.org/emf/2002/Ecore')]
+
+[query public getStereotypeMetaClass(stereotype:Stereotype) : EObject =
+invoke('org.eclipse.acceleo.module.dynamic_override_main.service.MetaClassService', 'getStereotypeMetaClass(org.eclipse.uml2.uml.Stereotype)',Sequence{stereotype}) 
+/]
+
+[query public getName(arg : uml::NamedElement) : String = 
+let stereotype:Stereotype=arg.getAppliedStereotypes()->any(true) in 
+if(stereotype.oclIsUndefined()) then
+	arg.name
+else
+	arg.getName(stereotype.getStereotypeMetaClass())
+endif
+/]
+
+[query public getName( arg : NamedElement, stereotype : OclAny ) : String = 
+arg.name+' (any stereotype)'
+/]
+
+[template public printName( arg : Component , default : OclAny)]
+	2 Component name (default printName): [arg.getName()/]
+[/template]
+
+[template public printName(arg : Component)]
+[if(arg.getAppliedStereotypes()->size()=0)]
+	0 Component name: [arg.getName()/]
+[else]
+	[let stereotype:Stereotype=arg.getAppliedStereotypes()->any(true)] 
+	1 [stereotype.getStereotypeMetaClass().eGet("name")/] [arg.printName(stereotype.getStereotypeMetaClass())/]
+	[/let]	
+[/if]
+[/template]
+
+[template public generateElementMain(aModel : Model)]
+[comment @main/]
+[file (aModel.name, false, 'UTF-8')]
+	[for (it : Component | aModel.eAllContents(Component))]
+		[it.printName()/]
+	[/for]
+[/file]
+[/template]

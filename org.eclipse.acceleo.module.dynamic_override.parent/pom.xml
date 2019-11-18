@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.samsarasoftware.overriding.sample</groupId>
+	<artifactId>org.eclipse.acceleo.module.dynamic_override.parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>Eclipse - maven</id>
+			<url>https://repo.eclipse.org/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>eclipse-platform</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<properties>
+		<tycho.version>1.0.0</tycho.version>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+		<platform-version>[4.5)</platform-version>
+		<acceleo.maven.version>3.3.5-SNAPSHOT</acceleo.maven.version>
+		<acceleo.maven.engine.version>3.3.5-SNAPSHOT</acceleo.maven.engine.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+	</properties>
+
+	<modules>
+		<module>../org.eclipse.acceleo.module.dynamic_override_main</module>
+		<module>../org.eclipse.acceleo.module.dynamic_override_entity</module>
+		<module>../org.eclipse.acceleo.module.sample/install-dependencies</module>
+		<module>../org.eclipse.acceleo.module.sample</module>
+	</modules>
+</project>

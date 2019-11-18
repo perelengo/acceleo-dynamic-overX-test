@@ -1,0 +1,24 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generateEntity('http://www.eclipse.org/uml2/5.0.0/UML', 'http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard')
+ extends org::eclipse::acceleo::module::dynamic_override_main::main::generateMain]
+
+
+[**
+ * The documentation of the template generateElement.
+ * @param aModel
+ */]
+
+[query public getName( arg : NamedElement, stereotype : Entity ) : String = 
+arg.name+' (entity stereotype)'
+/]
+
+
+
+[template public printName( arg : Component , default : Entity)]
+	Component name (overriden default printName): [arg.getName(default)/]
+[/template]
+
+

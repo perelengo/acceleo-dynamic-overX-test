@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dojo="http://www.samsarasoftware.net/dojo.profile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.samsarasoftware.net/dojo.profile platform:/plugin/net.samsarasoftware.metamodels/profiles/dojo.profile.uml#_O-wtgMiMEee6JIMjhFx77g">
+  <uml:Model xmi:id="_5TnwIAbdEequa5v7K24aJQ" name="RootElement">
+    <packagedElement xmi:type="uml:Component" xmi:id="__0W5QAbdEequa5v7K24aJQ" name="Component3"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-68lAAbdEequa5v7K24aJQ" name="Component1"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="__WyMcAbdEequa5v7K24aJQ" name="Component2"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_D2GQYAbeEequa5v7K24aJQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_D2J6wAbeEequa5v7K24aJQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_CvyJwAb4Eequa5v7K24aJQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Cv0mAAb4Eequa5v7K24aJQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Cv0mAQb4Eequa5v7K24aJQ" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Cv0mAgb4Eequa5v7K24aJQ" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Cv0mAwb4Eequa5v7K24aJQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Cv0mBAb4Eequa5v7K24aJQ" key="Date" value="2017-11-13"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Cv0mBQb4Eequa5v7K24aJQ" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Cvyw0Ab4Eequa5v7K24aJQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="platform:/plugin/net.samsarasoftware.metamodels/profiles/dojo.profile.uml#_O-wtgMiMEee6JIMjhFx77g"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="platform:/plugin/net.samsarasoftware.metamodels/profiles/dojo.profile.uml#_kwJy8FTUEeacavzHSYg3RA"/>
+    </profileApplication>
+  </uml:Model>
+  <standard:Auxiliary xmi:id="_GXM7MAbeEequa5v7K24aJQ" base_Class="_-68lAAbdEequa5v7K24aJQ"/>
+  <standard:Entity xmi:id="_HKMeYAbeEequa5v7K24aJQ" base_Component="__WyMcAbdEequa5v7K24aJQ"/>
+  <dojo:Dojotoolkit xmi:id="_EsHTkAb4Eequa5v7K24aJQ" base_Component="__0W5QAbdEequa5v7K24aJQ"/>
+</xmi:XMI>

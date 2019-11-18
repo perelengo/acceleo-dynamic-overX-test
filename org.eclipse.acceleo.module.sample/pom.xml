@@ -1,0 +1,305 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.samsarasoftware.overriding.sample</groupId>
+		<artifactId>org.eclipse.acceleo.module.dynamic_override.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../org.eclipse.acceleo.module.dynamic_override.parent</relativePath>
+	</parent>
+
+	<groupId>com.samsarasoftware.overriding.sample</groupId>
+	<artifactId>org.eclipse.acceleo.module.dynamic_override.sample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Eclipse - Acceleo Release</id>
+			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>eclipse-platform</id>
+			<layout>p2</layout>
+			<url>${eclipse-site}</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>eclipse-platform2</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/eclipse/updates/4.5</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<properties>
+		<tycho.version>1.0.0</tycho.version>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+		<platform-version>[4.5)</platform-version>
+		<acceleo.maven.version>3.3.5-SNAPSHOT</acceleo.maven.version>
+		<acceleo.maven.engine.version>3.3.5-SNAPSHOT</acceleo.maven.engine.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<eclipse-site>http://download.eclipse.org/releases/mars</eclipse-site>
+		<acceleo.maven.launcher.version>3.3.5-SNAPSHOT</acceleo.maven.launcher.version>
+		<generators.source.model>${basedir}/model.uml</generators.source.model>
+		<generators.target.folder>${basedir}/acceleo_generated</generators.target.folder>
+	</properties>
+
+
+	<build>
+		<plugins>
+			<!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-maven-plugin</artifactId> 
+				<version>${tycho.version}</version> <extensions>true</extensions> </plugin> 
+				<plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>target-platform-configuration</artifactId> 
+				<version>${tycho.version}</version> <configuration> <resolver>p2</resolver> 
+				<pomDependencies>consider</pomDependencies> </configuration> </plugin> -->
+			<plugin>
+				<groupId>org.eclipse.acceleo</groupId>
+				<artifactId>org.eclipse.acceleo.maven.launcher</artifactId>
+				<version>${acceleo.maven.launcher.version}</version>
+				<executions>
+					<execution>
+						<id>generate-services</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>acceleo-launcher</goal>
+						</goals>
+						<configuration>
+							<generatorClass>org.eclipse.acceleo.module.dynamic_override_main.main.GenerateMain</generatorClass>
+							<model>${generators.source.model}</model>
+							<outputFolder>${generators.target.folder}</outputFolder>
+							<failOnError>true</failOnError>
+						</configuration>
+					</execution>
+
+				</executions>
+				<dependencies>
+
+					<dependency>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.maven</artifactId>
+						<version>${acceleo.maven.version}</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.eclipse.emf</groupId>
+								<artifactId>ecore</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.emf</groupId>
+								<artifactId>ecore.xmi</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.emf</groupId>
+								<artifactId>common</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.ocl</groupId>
+								<artifactId>ecore</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.ocl</groupId>
+								<artifactId>ocl</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.orbit</groupId>
+								<artifactId>lpg.runtime</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.core</groupId>
+								<artifactId>contenttype</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>org.eclipse.equinox</groupId>
+								<artifactId>common</artifactId>
+							</exclusion>
+							<exclusion>
+								<groupId>com.google.guava</groupId>
+								<artifactId>guava</artifactId>
+							</exclusion>
+
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>com.samsarasoftware.overriding.sample</groupId>
+						<artifactId>org.eclipse.acceleo.module.dynamic_override_main</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+					</dependency>
+					<dependency>
+						<groupId>com.samsarasoftware.overriding.sample</groupId>
+						<artifactId>org.eclipse.acceleo.module.dynamic_override_entity</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+					</dependency>
+
+
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.uml</artifactId>
+						<version>5.1.2.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.uml.resources</artifactId>
+						<version>5.1.0.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.types</artifactId>
+						<version>2.0.0.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.common</artifactId>
+						<version>2.1.0.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
+						<version>1.0.100.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.core.runtime</artifactId>
+						<version>3.11.1.v20150903-1804</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.osgi.bundle</groupId>
+						<artifactId>javax.annotation</artifactId>
+						<version>1.1.0.v201209060031</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.osgi.bundle</groupId>
+						<artifactId>javax.inject</artifactId>
+						<version>1.0.0.v20091030</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.osgi</artifactId>
+						<version>3.10.102.v20160118-1700</version>
+					</dependency>
+					<!-- <dependency><groupId>p2.eclipse-plugin</groupId><artifactId>org.eclipse.osgi.compatibility.state</artifactId><version>1.0.100.v20150402-1551</version></dependency> -->
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.equinox.common</artifactId>
+						<version>3.7.0.v20150402-1709</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.core.jobs</artifactId>
+						<version>3.7.0.v20150330-2103</version>
+					</dependency>
+					<!-- <dependency><groupId>p2.eclipse-plugin</groupId><artifactId>org.eclipse.core.runtime.compatibility.registry</artifactId><version>3.6.0.v20150318-1505</version></dependency> -->
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.equinox.registry</artifactId>
+						<version>3.6.0.v20150318-1503</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.equinox.preferences</artifactId>
+						<version>3.5.300.v20150408-1437</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.core.contenttype</artifactId>
+						<version>3.5.0.v20150421-2214</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.equinox.app</artifactId>
+						<version>1.3.300.v20150423-1356</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.uml</artifactId>
+						<version>5.1.2.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.emf.ecore</artifactId>
+						<version>2.11.2.v20160208-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.emf.common</artifactId>
+						<version>2.11.1.v20160208-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+						<version>2.11.1.v20160208-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.common</artifactId>
+						<version>2.1.0.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.types</artifactId>
+						<version>2.0.0.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
+						<version>2.9.0.v20160208-0841</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
+						<version>1.0.100.v20160201-0816</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.ocl</artifactId>
+						<version>3.5.0.v20150521-1211</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>lpg.runtime.java</artifactId>
+						<version>2.0.17.v201004271640</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.ocl.common</artifactId>
+						<version>1.3.0.v20150519-0914</version>
+					</dependency>
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>org.eclipse.ocl.ecore</artifactId>
+						<version>3.5.0.v20150525-1635</version>
+					</dependency>
+					<!-- <dependency><groupId>p2.eclipse-plugin</groupId><artifactId>org.eclipse.emf.codegen.ecore</artifactId><version>2.11.1.v20160208-0841</version></dependency> -->
+					<!-- <dependency><groupId>p2.eclipse-plugin</groupId><artifactId>org.eclipse.emf.codegen</artifactId><version>2.11.0.v20160208-0841</version></dependency> -->
+					<dependency>
+						<groupId>p2.eclipse-plugin</groupId>
+						<artifactId>com.google.guava</artifactId>
+						<version>15.0.0.v201403281430</version>
+					</dependency>
+
+
+					<dependency>
+						<groupId>com.samsarasoftware.overriding.sample</groupId>
+						<artifactId>org.eclipse.acceleo.module.sample-install-dependencies</artifactId>
+						<version>1.0.0-SNAPSHOT</version>
+
+					</dependency>
+
+
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>

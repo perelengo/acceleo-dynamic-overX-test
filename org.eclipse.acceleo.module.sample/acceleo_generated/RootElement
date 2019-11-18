@@ -1,0 +1,6 @@
+			0 Component name: Component3
+		
+			1  	2 Component name (default printName): Component1 (any stereotype)
+		
+			1  	Component name (overriden default printName): Component2 (entity stereotype)
+		
