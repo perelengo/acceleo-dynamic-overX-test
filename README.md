@@ -78,11 +78,16 @@ Defines the dynamic overriding query and template.
 	
 # Test model
 Has three components:
+
 Component 1 is stereotyped UMLStandardProfile::Auxiliary
+
 Component 2 is stereotyped UMLStandardProfile::Entity
+
 Component 3 is stereotyped with another stereotype that is not registered by default.
 
+
 # Results before the change
+
 org.eclipse.acceleo.engine.AcceleoEvaluationException: Error while resolving module dependencies.
         at org.eclipse.acceleo.engine.internal.environment.AcceleoEvaluationEnvironment.getAllCandidateNamesakes(AcceleoEvaluationEnvironment.java:630)
         at org.eclipse.acceleo.engine.internal.environment.AcceleoEvaluationEnvironment.getAllCandidates(AcceleoEvaluationEnvironment.java:414)
@@ -91,7 +96,8 @@ org.eclipse.acceleo.engine.AcceleoEvaluationException: Error while resolving mod
 
 		
 
-#Results after the change
+# Results after the change
+
 			0 Component name: Component3
 		
 			1  	2 Component name (default printName): Component1 (any stereotype)
