@@ -89,10 +89,15 @@ Component 3 is stereotyped with another stereotype that is not registered by def
 # Results before the change
 
 org.eclipse.acceleo.engine.AcceleoEvaluationException: Error while resolving module dependencies.
+
         at org.eclipse.acceleo.engine.internal.environment.AcceleoEvaluationEnvironment.getAllCandidateNamesakes(AcceleoEvaluationEnvironment.java:630)
+
         at org.eclipse.acceleo.engine.internal.environment.AcceleoEvaluationEnvironment.getAllCandidates(AcceleoEvaluationEnvironment.java:414)
+
         at org.eclipse.acceleo.engine.internal.evaluation.AcceleoEvaluationVisitor.prepareInvocation(AcceleoEvaluationVisitor.java:1750)
+
         at org.eclipse.acceleo.engine.internal.evaluation.AcceleoEvaluationVisitor.visitAcceleoQueryInvocation(AcceleoEvaluationVisitor.java:850)
+
 
 		
 
@@ -102,4 +107,4 @@ org.eclipse.acceleo.engine.AcceleoEvaluationException: Error while resolving mod
 		
 			1  	2 Component name (default printName): Component1 (any stereotype)
 		
-			1  	Component name (overriden default printName): 	
+			1  	Component name (overriden default printName): Component2 (entity stereotype) 
