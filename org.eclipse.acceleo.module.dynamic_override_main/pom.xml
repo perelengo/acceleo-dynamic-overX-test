@@ -49,11 +49,11 @@
 		</repository>
 	</repositories>
 	<properties>
-		<tycho.version>2.7.4</tycho.version>
-		<eclipse-site>https://download.eclipse.org/releases/2022-12/</eclipse-site>
-		<platform-version>[4.10)</platform-version>
+		<tycho.version>3.0.5</tycho.version>
+		<eclipse-site>https://download.eclipse.org/releases/2024-09/</eclipse-site>
+		<platform-version>4.33</platform-version>
 		<acceleo.maven.version>3.6.4</acceleo.maven.version>
-		<acceleo.maven.engine.version>3.7.11-SNAPSHOT</acceleo.maven.engine.version>
+		<acceleo.maven.engine.version>3.7.17-SNAPSHOT</acceleo.maven.engine.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>

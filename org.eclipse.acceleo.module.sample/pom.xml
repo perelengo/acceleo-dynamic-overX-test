@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -24,7 +25,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<repositories>
-			<repository>
+		<repository>
 			<id>Eclipse - Acceleo Release</id>
 			<url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
 			<snapshots>
@@ -49,11 +50,11 @@
 		</repository>
 	</repositories>
 	<properties>
-		<tycho.version>2.7.4</tycho.version>
-		<eclipse-site>https://download.eclipse.org/releases/2022-12/</eclipse-site>
-		<platform-version>[4.10)</platform-version>
+		<tycho.version>3.0.5</tycho.version>
+		<eclipse-site>https://download.eclipse.org/releases/2024-09/</eclipse-site>
+		<platform-version>4.33</platform-version>
 		<acceleo.maven.version>3.6.4</acceleo.maven.version>
-		<acceleo.maven.engine.version>3.7.11-SNAPSHOT</acceleo.maven.engine.version>
+		<acceleo.maven.engine.version>3.7.17-SNAPSHOT</acceleo.maven.engine.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<acceleo.maven.launcher.version>3.6.4</acceleo.maven.launcher.version>
@@ -64,9 +65,11 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-maven-plugin</artifactId> 
+			<!-- <plugin> <groupId>org.eclipse.tycho</groupId>
+			<artifactId>tycho-maven-plugin</artifactId> 
 				<version>${tycho.version}</version> <extensions>true</extensions> </plugin> 
-				<plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>target-platform-configuration</artifactId> 
+				<plugin> <groupId>org.eclipse.tycho</groupId>
+			<artifactId>target-platform-configuration</artifactId> 
 				<version>${tycho.version}</version> <configuration> <resolver>p2</resolver> 
 				<pomDependencies>consider</pomDependencies> </configuration> </plugin> -->
 			<plugin>
@@ -81,7 +84,8 @@
 							<goal>acceleo-launcher</goal>
 						</goals>
 						<configuration>
-							<generatorClass>org.eclipse.acceleo.module.dynamic_override_main.main.GenerateMain</generatorClass>
+							<generatorClass>
+								org.eclipse.acceleo.module.dynamic_override_main.main.GenerateMain</generatorClass>
 							<model>${generators.source.model}</model>
 							<outputFolder>${generators.target.folder}</outputFolder>
 							<failOnError>true</failOnError>
@@ -90,26 +94,18 @@
 
 				</executions>
 				<dependencies>
-
-					
-					
-					
-					<dependency>
-						<groupId>org.eclipse.acceleo</groupId>
-						<artifactId>org.eclipse.acceleo.maven</artifactId>
-						<version>${acceleo.maven.version}</version>
-						
-					</dependency>
 					<dependency>
 						<groupId>com.samsarasoftware.overriding.sample</groupId>
-						<artifactId>org.eclipse.acceleo.module.dynamic_override_main</artifactId>
-						<type>eclipse-plugin</type>
+						<artifactId>
+							org.eclipse.acceleo.module.dynamic_override_main</artifactId>
+						<type>jar</type>
 						<version>1.0.0-SNAPSHOT</version>
 					</dependency>
 					<dependency>
 						<groupId>com.samsarasoftware.overriding.sample</groupId>
-						<artifactId>org.eclipse.acceleo.module.dynamic_override_entity</artifactId>
-						<type>eclipse-plugin</type>
+						<artifactId>
+							org.eclipse.acceleo.module.dynamic_override_entity</artifactId>
+						<type>jar</type>
 						<version>1.0.0-SNAPSHOT</version>
 					</dependency>
 
@@ -143,25 +139,42 @@
 						<groupId>p2.eclipse-plugin</groupId>
 						<artifactId>org.eclipse.uml2.common</artifactId>
 						<version>2.1.0.v20160201-0816</version>
-					</dependency>					
-				
-					
-
+					</dependency>
 
 
 					<dependency>
 						<groupId>com.samsarasoftware.overriding.sample</groupId>
-						<artifactId>org.eclipse.acceleo.module.sample-install-dependencies</artifactId>
+						<artifactId>
+							org.eclipse.acceleo.module.sample-install-dependencies</artifactId>
 						<version>1.0.0-SNAPSHOT</version>
 
 					</dependency>
 
-
+					<dependency>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.parser</artifactId>
+						<version>${acceleo.maven.engine.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.model</artifactId>
+						<version>${acceleo.maven.engine.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.common</artifactId>
+						<version>${acceleo.maven.engine.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.acceleo</groupId>
+						<artifactId>org.eclipse.acceleo.engine</artifactId>
+						<version>${acceleo.maven.engine.version}</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 		</plugins>
+
+
 	</build>
-
-
 
 </project>

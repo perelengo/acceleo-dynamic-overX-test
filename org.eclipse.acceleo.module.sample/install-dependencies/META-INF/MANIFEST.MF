@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.eclipse.acceleo.module.sample-install-dependencies
 Bundle-Version: 1.0.0
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.equinox.supplement,
  org.eclipse.uml2.types,
  org.eclipse.uml2.uml,
  org.eclipse.uml2.common,
@@ -14,13 +13,13 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,
  org.eclipse.ocl.ecore,
- org.eclipse.acceleo.common;bundle-version="3.7.11",
- org.eclipse.acceleo.model;bundle-version="3.7.11",
- org.eclipse.acceleo.profiler;bundle-version="3.7.11",
- org.eclipse.acceleo.engine;bundle-version="3.7.11",
+ org.eclipse.acceleo.common;bundle-version="3.7.17",
+ org.eclipse.acceleo.model;bundle-version="3.7.17",
+ org.eclipse.acceleo.profiler;bundle-version="3.7.17",
+ org.eclipse.acceleo.engine;bundle-version="3.7.17",
  com.google.guava,
  org.eclipse.uml2.uml.resources
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 
